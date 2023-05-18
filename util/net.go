@@ -12,6 +12,12 @@ import (
 
 // GetFreePort gets a free port.
 func GetFreePort() (port int, err error) {
+	// OpenRefactory Warning:
+	// Possible Hard Coded IP!
+	// Path:
+	//	File: net.go, Line: 15
+	//		net.Listen("tcp", "127.0.0.1:0")
+	//		Tainted information is used in a sink.
 	listener, err := net.Listen("tcp", "127.0.0.1:0")
 	if err != nil {
 		return 0, err
